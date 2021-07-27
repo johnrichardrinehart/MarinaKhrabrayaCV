@@ -20,16 +20,7 @@
 \usepackage{graphicx}       % for pictures
 \usepackage{microtype}      % for microtypography stuff
 \usepackage{xcolor}         % for colours
-\usepackage{hyperref}       % for links
-\hypersetup{
-colorlinks=true,
-linkcolor=blue,
-filecolor=magenta,
-urlcolor=cyan,
-pdftitle={Overleaf Example},
-pdfpagemode=FullScreen,
-}
-
+\usepackage[colorlinks]{hyperref}       % for links
 
 % margin and column widths
 % ------------------------
@@ -240,6 +231,12 @@ pdfpagemode=FullScreen,
 
 \begin{document}
 
+\hypersetup{
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
 
 % personal info
 % -------------
@@ -297,10 +294,10 @@ Kharkiv
 Freelancer
 
 \begin{itemize}[leftmargin=*]
-    \item Characters art
-    \item Vector graphics (promo production for printing, logotypes)
-    \item Creating illustrations for children's books 
-    \item Creating sticker packs for Telegram
+    \item \href{https://www.artstation.com/artwork/rAG99J}{Character design}
+    \item Vector graphic design (design new logos, render contextual mock-ups, etc.)
+    \item Illustrate children's books
+    \item Create Telegram \href{https://t.me/addstickers/Nixraccoon}{sticker} \href{https://t.me/addstickers/Mam_rental}{packs}
 \end{itemize}
 }
 
