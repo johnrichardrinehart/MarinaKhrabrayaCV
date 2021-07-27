@@ -20,6 +20,15 @@
 \usepackage{graphicx}       % for pictures
 \usepackage{microtype}      % for microtypography stuff
 \usepackage{xcolor}         % for colours
+\usepackage{hyperref}       % for links
+\hypersetup{
+colorlinks=true,
+linkcolor=blue,
+filecolor=magenta,
+urlcolor=cyan,
+pdftitle={Overleaf Example},
+pdfpagemode=FullScreen,
+}
 
 
 % margin and column widths
@@ -131,29 +140,29 @@
 % @param #1 left column content (should be the CV photo)
 % @param #2 right column content (should be the name and personal info)
 \newcommand{\cvpersonalinfo}[2]{
-    % left and right column
-    \begin{minipage}[t]{\cvleftcolumnwidth}
-        \vspace{0mm} % XXX hack to align to top, see https://tex.stackexchange.com/a/11632
-        \raggedleft #1
-    \end{minipage}% XXX necessary comment to avoid unwanted space
-    \hspace{\cvcolumngapwidth}% XXX necessary comment to avoid unwanted space
-    \begin{minipage}[t]{\cvrightcolumnwidth}
-        \vspace{0mm} % XXX hack to align to top, see https://tex.stackexchange.com/a/11632
-        #2
-    \end{minipage}
+% left and right column
+\begin{minipage}[t]{\cvleftcolumnwidth}
+    \vspace{0mm} % XXX hack to align to top, see https://tex.stackexchange.com/a/11632
+    \raggedleft #1
+\end{minipage}% XXX necessary comment to avoid unwanted space
+\hspace{\cvcolumngapwidth}% XXX necessary comment to avoid unwanted space
+\begin{minipage}[t]{\cvrightcolumnwidth}
+    \vspace{0mm} % XXX hack to align to top, see https://tex.stackexchange.com/a/11632
+    #2
+\end{minipage}
 
-    % space after
-    \vspace{\cvafteritemskipamount}
+% space after
+\vspace{\cvafteritemskipamount}
 }
 
 % typesets a name, with appropriate vertical space after
 % @param #1 name text
 \newcommand{\cvname}[1]{
-    % name
-    \cvnamestyle{#1}
+% name
+\cvnamestyle{#1}
 
-    % space after
-    \vspace{\cvafternameskipamount}
+% space after
+\vspace{\cvafternameskipamount}
 }
 
 % typesets a line of personal info beginning with an icon, with appropriate vertical space after
@@ -161,30 +170,30 @@
 % @param #2 icon filename
 % @param #3 line text
 \newcommand{\cvpersonalinfolinewithicon}[3]{
-    % icon, vertically aligned with text (see https://tex.stackexchange.com/a/129463)
-    \raisebox{.5\fontcharht\font`E-.5\height}{\includegraphics[#1]{#2}}
-    % text
-    #3
+% icon, vertically aligned with text (see https://tex.stackexchange.com/a/129463)
+\raisebox{.5\fontcharht\font`E-.5\height}{\includegraphics[#1]{#2}}
+% text
+#3
 
-    % space after
-    \vspace{\cvafterpersonalinfolineskipamount}
+% space after
+\vspace{\cvafterpersonalinfolineskipamount}
 }
 
 % creates a "section" CV item with the given left column content, a horizontal rule in the right column, and with
 % appropriate vertical space after
 % @param #1 left column content (should be the section name)
 \newcommand{\cvsection}[1]{
-    % left and right column
-    \begin{minipage}[t]{\cvleftcolumnwidth}
-        \raggedleft\cvsectionstyle{#1}
-    \end{minipage}% XXX necessary comment to avoid unwanted space
-    \hspace{\cvcolumngapwidth}% XXX necessary comment to avoid unwanted space
-    \begin{minipage}[t]{\cvrightcolumnwidth}
-        \textcolor{cvrulecolor}{\rule{\cvrightcolumnwidth}{0.3mm}}
-    \end{minipage}
+% left and right column
+\begin{minipage}[t]{\cvleftcolumnwidth}
+    \raggedleft\cvsectionstyle{#1}
+\end{minipage}% XXX necessary comment to avoid unwanted space
+\hspace{\cvcolumngapwidth}% XXX necessary comment to avoid unwanted space
+\begin{minipage}[t]{\cvrightcolumnwidth}
+    \textcolor{cvrulecolor}{\rule{\cvrightcolumnwidth}{0.3mm}}
+\end{minipage}
 
-    % space after
-    \vspace{\cvaftersectionskipamount}
+% space after
+\vspace{\cvaftersectionskipamount}
 }
 
 % creates a standard, multi-purpose CV item with the given left and right column contents, parskip set to cvparskip
@@ -192,29 +201,29 @@
 % @param #1 left column content
 % @param #2 right column content
 \newcommand{\cvitem}[2]{
-    % left and right column
-    \begin{minipage}[t]{\cvleftcolumnwidth}
-        \raggedleft #1
-    \end{minipage}% XXX necessary comment to avoid unwanted space
-    \hspace{\cvcolumngapwidth}% XXX necessary comment to avoid unwanted space
-    \begin{minipage}[t]{\cvrightcolumnwidth}
-        \setlength{\parskip}{\cvparskip} #2
-    \end{minipage}
+% left and right column
+\begin{minipage}[t]{\cvleftcolumnwidth}
+    \raggedleft #1
+\end{minipage}% XXX necessary comment to avoid unwanted space
+\hspace{\cvcolumngapwidth}% XXX necessary comment to avoid unwanted space
+\begin{minipage}[t]{\cvrightcolumnwidth}
+    \setlength{\parskip}{\cvparskip} #2
+\end{minipage}
 
-    % space after
-    \vspace{\cvafteritemskipamount}
+% space after
+\vspace{\cvafteritemskipamount}
 }
 
 % typesets a title, with appropriate vertical space after
 % @param #1 title text
 \newcommand{\cvtitle}[1]{
-    % title
-    \cvtitlestyle{#1}
+% title
+\cvtitlestyle{#1}
 
-    % space after
-    \vspace{\cvaftertitleskipamount}
-    % XXX need to subtract cvparskip here, because it is automatically inserted after the title "paragraph"
-    \vspace{-\cvparskip}
+% space after
+\vspace{\cvaftertitleskipamount}
+% XXX need to subtract cvparskip here, because it is automatically inserted after the title "paragraph"
+\vspace{-\cvparskip}
 }
 
 
@@ -236,34 +245,41 @@
 % -------------
 
 \cvpersonalinfo{
-    % photo
-	\includegraphics[trim={36cm 20cm 25cm 0cm},clip,width=36mm]{resources/photo.jpg}
+% photo
+\includegraphics[trim={36cm 20cm 25cm 0cm},clip,width=36mm]{resources/photo.jpg}
 }{
-    % name
-    \cvname{Marina Khrabraya}
+% name
+\cvname{Marina Khrabraya}
 
-    % address
-    \cvpersonalinfolinewithicon{height=4mm}{resources/IcoMoon-Free-PDF/072-location.pdf}{
-        Kharkiv
-    }
+% address
+\cvpersonalinfolinewithicon{height=4mm}{resources/IcoMoon-Free-PDF/072-location.pdf}{
+Kharkiv
+}
 
-    % phone number
-    \cvpersonalinfolinewithicon{height=4mm}{resources/IcoMoon-Free-PDF/067-phone.pdf}{
-        +38\,(067)\,570\,55\,09
-    }
+% phone number
+\cvpersonalinfolinewithicon{height=4mm}{resources/IcoMoon-Free-PDF/067-phone.pdf}{
++38\,(067)\,570\,55\,09
+}
 
-    % email address
-    \cvpersonalinfolinewithicon{height=4mm}{resources/IcoMoon-Free-PDF/070-envelop.pdf}{
-       marykhrabraya@gmail.com
-    }
+% email address
+\cvpersonalinfolinewithicon{height=4mm}{resources/IcoMoon-Free-PDF/070-envelop.pdf}{
+\href{mailto://marykhrabraya@gmail.com}{marykhrabraya@gmail.com}
+}
 
-    % LinkedIn account
-    \cvpersonalinfolinewithicon{height=4mm}{resources/IcoMoon-Free-PDF/458-linkedin.pdf}{
-        fake-name-123456789
-    }
+% LinkedIn account
+\cvpersonalinfolinewithicon{height=4mm}{resources/IcoMoon-Free-PDF/458-linkedin.pdf}{
+\href{https://www.linkedin.com/in/\%D0\%BC\%D0\%B0\%D1\%80\%D0\%B8\%D0\%BD\%D0\%B0-\%D1\%85\%D1\%80\%D0\%B0\%D0\%B1\%D1\%80\%D0\%B0\%D1\%8F-300587168/}{https://linkedin.com/in/марина-храбрая-300587168}
+}
 
-    % date of birth
-    Born 27 February 1991
+% ArtStation account
+\cvpersonalinfolinewithicon{height=4mm}{"resources/ArtStationLogo/vector/ArtStation-logomark-dark.eps"}{
+\href{https://artstation.com/marinakhrabraya}{https://artstation.com/marinakhrabraya}
+}
+
+% Personal Website
+\cvpersonalinfolinewithicon{height=4mm}{resources/IcoMoon-Free-PDF/203-earth.pdf}{
+\href{https://marinabrave.com}{https://marinabrave.com}
+}
 }
 
 
@@ -274,63 +290,63 @@
 
 % Fake Company 2
 \cvitem{
-    \cvdurationstyle{March 2021 -- current time}
+\cvdurationstyle{March 2021 -- current time}
 }{
-    \cvtitle{2D artist}
+\cvtitle{2D artist}
 
-    Freelance
+Freelancer
 
-    \begin{itemize}[leftmargin=*]
-        \item Characters art
-        \item Vector graphics (promo production for printing, logotypes)
-        \item Creating illustrations for children's books 
-        \item Creating sticker packs for Telegram
-    \end{itemize}
+\begin{itemize}[leftmargin=*]
+    \item Characters art
+    \item Vector graphics (promo production for printing, logotypes)
+    \item Creating illustrations for children's books 
+    \item Creating sticker packs for Telegram
+\end{itemize}
 }
 
 % Fake Company 2
 \cvitem{
-    \cvdurationstyle{February 2018 -- March 2021}
+\cvdurationstyle{February 2018 -- March 2021}
 }{
-    \cvtitle{Lead of Event team}
+\cvtitle{Lead of Event team}
 
-    NIX, Kharkiv
+NIX, Kharkiv
 
-    \begin{itemize}[leftmargin=*]
-        \item Managing a team of event managers to move forward
-        \item Strategic planning
-        \item Risk management
-        \item Monitoring and controlling projects according to a project plan and a project
-schedule
-
-        \item Defining project’s scope, goals, milestones and setting up project requirements, priorities and timeline
-        \item Managing expectations and resources to meet projects’ needs
-
-        \item Working with HR, Education, Designers and  Engineer teams  to improve our projects 
-        \item Providing set of education video streams (education programs, hiring month) 
-        \item Online MultiConference (17 000+ viewers, 13 countries, 41 cities in Ukraine)
-
-
-             
-    \end{itemize}
+\begin{itemize}[leftmargin=*]
+    \item Managing a team of event managers to move forward
+    \item Strategic planning
+    \item Risk management
+    \item Monitoring and controlling projects according to a project plan and a project
+    schedule
+    
+    \item Defining project’s scope, goals, milestones and setting up project requirements, priorities and timeline
+    \item Managing expectations and resources to meet projects’ needs
+    
+    \item Working with HR, Education, Designers and  Engineer teams  to improve our projects 
+    \item Providing set of education video streams (education programs, hiring month) 
+    \item Online MultiConference (17 000+ viewers, 13 countries, 41 cities in Ukraine)
+    
+    
+    
+\end{itemize}
 }
 
 % Fake Company 1
 \cvitem{
-    \cvdurationstyle{July 2013 -- February 2018}
+\cvdurationstyle{July 2013 -- February 2018}
 }{
-    \cvtitle{PR Manager}
+\cvtitle{PR Manager}
 
-    NIX, Kharkiv
+NIX, Kharkiv
 
-    \begin{itemize}[leftmargin=*]
-        \item Event organisation  
-        \item Improved the new corporate style/re-branding
-        \item Launched a lot of tech talks, conferences and education programs, MultiConference  
-        \item Research of effective subcontractors 
-        \item Partnership with video production, photographers, ect. 
-
-    \end{itemize}
+\begin{itemize}[leftmargin=*]
+    \item Event organisation  
+    \item Improved the new corporate style/re-branding
+    \item Launched a lot of tech talks, conferences and education programs, MultiConference  
+    \item Research of effective subcontractors 
+    \item Partnership with video production, photographers, ect. 
+    
+\end{itemize}
 }
 
 
@@ -341,20 +357,20 @@ schedule
 
 % master's
 \cvitem{
-    \cvdurationstyle{2012 -- 2013}
+\cvdurationstyle{2012 -- 2013}
 }{
-    \cvtitle{Specialist degree in Social Psychology}
+\cvtitle{Specialist degree in Social Psychology}
 
-    Faculty of Psychology, National Aerospace University - Kharkiv Aviation Institute
+Faculty of Psychology, National Aerospace University - Kharkiv Aviation Institute
 }
 
 % bachelor's
 \cvitem{
-    \cvdurationstyle{2008 -- 2012}
+\cvdurationstyle{2008 -- 2012}
 }{
-    \cvtitle{Bachelors's degree in Psychology}
+\cvtitle{Bachelors's degree in Psychology}
 
-    Faculty of Psychology, National Aerospace University - Kharkiv Aviation Institute
+Faculty of Psychology, National Aerospace University - Kharkiv Aviation Institute
 }
 
 
@@ -367,23 +383,23 @@ schedule
 
 % languages
 \cvitem{
-    \cvheadingstyle{Languages}
+\cvheadingstyle{Languages}
 }{
-    English -- fluent 
+English -- fluent 
 
 
-    Ukrainian, Russian -- native speaker
+Ukrainian, Russian -- native speaker
 }
 
 % fake skills
 \cvitem{
-    \cvheadingstyle{Hard skills}
+\cvheadingstyle{Hard skills}
 }{
-    Task management systems: Trello, Asana
-  
-    Creative work
+Task management systems: Trello, Asana
 
-    Drafting and designing
+Creative work
+
+Drafting and designing
 presentations
 
 Creating art in raster and vector graphics
@@ -391,16 +407,16 @@ Creating art in raster and vector graphics
 }
 % completely fake skills
 \cvitem{
-    \cvheadingstyle{Other skills}
+\cvheadingstyle{Other skills}
 }{
-    Nice team player
-    
+Nice team player
 
-    Good sense of humour
-    
-   Responsible 
-   
-   Creative
+
+Good sense of humour
+
+Responsible 
+
+Creative
 }
 
 
@@ -413,16 +429,16 @@ Creating art in raster and vector graphics
 
 % driving licence
 \cvitem{
-    \cvheadingstyle{Driving licence}
+\cvheadingstyle{Driving licence}
 }{
-    B -- category
+B -- category
 }
 
 % interests
 \cvitem{
-    \cvheadingstyle{Interests}
+\cvheadingstyle{Interests}
 }{
-    making art, music and concerts, driving 
+making art, music and concerts, driving 
 }
 
 \end{document}

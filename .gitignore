@@ -2,3 +2,7 @@
 *.pdf
 *.log
 *.sw?
+*.fdb_latexmk
+*.fls
+*.synctex*
+*.out
